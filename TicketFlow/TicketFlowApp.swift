@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct TicketFlowApp: App {
+    @AppStorage("modoAparencia") private var modoAparencia = AppearanceMode.automatic.rawValue
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(
+                    AppearanceMode(rawValue: modoAparencia)?.colorScheme
+                )
         }
     }
 }
