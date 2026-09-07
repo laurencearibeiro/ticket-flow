@@ -243,13 +243,13 @@ struct StatusBadge: View {
 
         case .prioridade:
             switch text {
-            case "Alta":
-                return .red.opacity(0.15)
+            case "Aberto":
+                return .blue.opacity(0.15)
 
-            case "Média":
+            case "Em andamento":
                 return .orange.opacity(0.15)
 
-            case "Baixa":
+            case "Resolvido":
                 return .green.opacity(0.15)
 
             default:
@@ -261,7 +261,19 @@ struct StatusBadge: View {
     private var corTexto: Color {
         switch tipo {
         case .status:
-            return .blue
+            switch text {
+            case "Aberto":
+                return .blue
+
+            case "Em andamento":
+                return .orange
+
+            case "Resolvido":
+                return .green
+
+            default:
+                return .gray
+            }
 
         case .prioridade:
             switch text {
